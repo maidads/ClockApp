@@ -18,11 +18,16 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         formatter.timeStyle = DateFormatter.Style.medium
+        
+        updateTimeLabel()
     }
 
     
     func updateTimeLabel() {
         let date = Date()
+        let dateString = formatter.string(from: date)
+        
+        timeLabel.text = dateString
     }
 
 }
