@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  ClockApp
-//
-//  Created by Maida on 2024-03-18.
-//
-
 import UIKit
 
 class ViewController: UIViewController {
@@ -12,6 +5,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var timeLabel: UILabel!
     
     let formatter = DateFormatter()
+    
+    var timer : Timer?
     
     
     override func viewDidLoad() {
@@ -21,7 +16,7 @@ class ViewController: UIViewController {
         
         updateTimeLabel()
         
-        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: updateTimeLabel(timer:))
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: updateTimeLabel(timer:))
     }
 
     
@@ -31,6 +26,8 @@ class ViewController: UIViewController {
         
         timeLabel.text = dateString
     }
-
+    
+    deinit {
+        timer?.invalidate()
+    }
 }
-
