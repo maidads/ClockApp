@@ -19,11 +19,13 @@ class ViewController: UIViewController {
         
         formatter.timeStyle = DateFormatter.Style.medium
         
-        updateTimeLabel()
+        //updateTimeLabel()
+        
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: updateTimeLabel(timer:))
     }
 
     
-    func updateTimeLabel() {
+    func updateTimeLabel(timer: Timer) {
         let date = Date()
         let dateString = formatter.string(from: date)
         
